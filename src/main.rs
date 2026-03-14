@@ -1,8 +1,10 @@
 fn bubblesort(mut array: Vec<i32>) -> Vec<i32> {
     let mut cycler = 0;
-    while cycler < (array.len() - 3) {
+
+    while cycler <= array.len() {
         let mut current = 0;
         let mut next = 1;
+
         while current <= (array.len() - 2) {
             if array[current] > array[next] {
                 array.swap(current, next);
@@ -31,6 +33,16 @@ pub mod test {
         let vector = bubblesort(vector);
         
         assert_eq!(vector, vec![1, 2, 3, 7, 73, 99]);
+
+        Ok(())
+    }
+
+    #[test]
+    fn reverse_sorted() -> Result<(), ()> {
+        let vector = vec![5, 4, 3, 2, 1];
+        let vector = bubblesort(vector);
+        
+        assert_eq!(vector, vec![1, 2, 3, 4, 5]);
 
         Ok(())
     }
